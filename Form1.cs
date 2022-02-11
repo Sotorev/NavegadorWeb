@@ -35,10 +35,28 @@ namespace NavegadorWeb
 
         private void GoButton_Click(object sender, EventArgs e)
         {
-            webBrowser1.Navigate(new Uri(toURL(comboBox1.SelectedItem.ToString())));
+            //Url
+            string url = "";
+            if(comboBox1.Text != null)
+            {
+                url = comboBox1.Text;
+            }
+            else if(comboBox1.SelectedItem.ToString() != null)
+            {
+                url=comboBox1.SelectedItem.ToString();
+                
+            }
+            if (!url.Contains("."))
+            {
+                url = "http://www.google.com/search?q=" + url;
+            }
+            else
+            {
+                url = "http://" + url;
+            }
+            webBrowser1.Navigate(new Uri(url));
             
-            comboBox1.Items[comboBox1.SelectedIndex] = toURL(comboBox1.SelectedItem.ToString());
-            String a = comboBox1.Items[comboBox1.SelectedIndex].ToString();
+            comboBox1.Text = url;
             Show();
         }
 
@@ -56,18 +74,6 @@ namespace NavegadorWeb
         {
             webBrowser1.GoBack();
         }
-        private String toURL(String keyword)
-        {
-            if (keyword.IndexOf(".") == -1)
-            {
-                keyword = "http://www.google.com/search?q=" + keyword;
-            }
-            else if (keyword.IndexOf("http:") == -1)
-            {
-                keyword = "http://" + keyword;
-            }
-   
-            return keyword;
-        }
+
     }
 }
