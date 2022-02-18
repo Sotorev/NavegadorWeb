@@ -36,6 +36,7 @@
             this.GoButton = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +46,7 @@
             this.menuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -56,28 +57,28 @@
             this.goForwardToolStripMenuItem,
             this.goBackToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(94, 29);
             this.menuToolStripMenuItem.Text = "Navigate";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
             // homeToolStripMenuItem
             // 
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            this.homeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.homeToolStripMenuItem.Size = new System.Drawing.Size(177, 30);
             this.homeToolStripMenuItem.Text = "Home";
             this.homeToolStripMenuItem.Click += new System.EventHandler(this.homeToolStripMenuItem_Click);
             // 
             // goForwardToolStripMenuItem
             // 
             this.goForwardToolStripMenuItem.Name = "goForwardToolStripMenuItem";
-            this.goForwardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.goForwardToolStripMenuItem.Size = new System.Drawing.Size(177, 30);
             this.goForwardToolStripMenuItem.Text = "Go Forward";
             this.goForwardToolStripMenuItem.Click += new System.EventHandler(this.goForwardToolStripMenuItem_Click);
             // 
             // goBackToolStripMenuItem
             // 
             this.goBackToolStripMenuItem.Name = "goBackToolStripMenuItem";
-            this.goBackToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.goBackToolStripMenuItem.Size = new System.Drawing.Size(177, 30);
             this.goBackToolStripMenuItem.Text = "Go back";
             this.goBackToolStripMenuItem.Click += new System.EventHandler(this.goBackToolStripMenuItem_Click);
             // 
@@ -96,7 +97,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "www.google.com",
-            "programacion"});
+            "www.outlook.com"});
             this.comboBox1.Location = new System.Drawing.Point(12, 68);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(452, 21);
@@ -113,11 +114,20 @@
             this.webBrowser1.Size = new System.Drawing.Size(784, 451);
             this.webBrowser1.TabIndex = 3;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(684, 107);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(100, 96);
+            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.GoButton);
@@ -143,6 +153,7 @@
         private System.Windows.Forms.Button GoButton;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

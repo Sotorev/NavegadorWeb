@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,9 +27,19 @@ namespace NavegadorWeb
         {
 
         }
-
+        private void readFile(string fileName)
+        {
+            FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(fs);
+            while(sr.Peek() != -1)
+            {
+                comboBox1.Items.Add(sr.ReadLine());
+            }
+            sr.Close();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
+            readFile("Historial.txt");
             comboBox1.SelectedIndex = 0;
             webBrowser1.GoHome();
         }
@@ -56,9 +67,30 @@ namespace NavegadorWeb
                 url = "http://" + url;
             }
             webBrowser1.Navigate(new Uri(url));
-            
+            bool isRegisted = false;
+            for (int i = 0; i < comboBox1.Items.Count; i++)
+            {
+                if (comboBox1.Items[i].ToString().Equals(url))
+                {
+                    isRegisted = true;
+                }
+            }
+            if (!isRegisted)
+            {
+                comboBox1.Items.Add(url);
+            }
+                
+
             comboBox1.Text = url;
-            Show();
+            saveFile("Historial.txt", url);
+            
+        }
+        private void saveFile(string fileName, string text)
+        {
+            FileStream stream = new FileStream(fileName, FileMode.Append);
+            StreamWriter sw = new StreamWriter(stream);
+            sw.WriteLine(text);
+            sw.Close();
         }
 
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
