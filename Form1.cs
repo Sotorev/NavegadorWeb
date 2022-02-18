@@ -46,8 +46,6 @@ namespace NavegadorWeb
 
         private void GoButton_Click(object sender, EventArgs e)
         {
-            //Url
-            //Commit1
             string url = "";
             if(comboBox1.Text != null)
             {
@@ -71,18 +69,16 @@ namespace NavegadorWeb
             for (int i = 0; i < comboBox1.Items.Count; i++)
             {
                 if (comboBox1.Items[i].ToString().Equals(url))
-                {
                     isRegisted = true;
-                }
             }
             if (!isRegisted)
             {
                 comboBox1.Items.Add(url);
+                saveFile("Historial.txt", url);
             }
                 
-
             comboBox1.Text = url;
-            saveFile("Historial.txt", url);
+            
             
         }
         private void saveFile(string fileName, string text)
