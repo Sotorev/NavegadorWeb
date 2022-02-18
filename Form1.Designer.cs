@@ -36,7 +36,6 @@
             this.GoButton = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,20 +113,11 @@
             this.webBrowser1.Size = new System.Drawing.Size(784, 451);
             this.webBrowser1.TabIndex = 3;
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(684, 107);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(100, 96);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.GoButton);
@@ -153,7 +143,6 @@
         private System.Windows.Forms.Button GoButton;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
