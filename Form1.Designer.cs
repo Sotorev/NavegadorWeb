@@ -33,13 +33,14 @@
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goForwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goBackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.GoButton = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.historialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordenAscendenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.másVisitadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GoButton = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DeletePagButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -69,23 +70,47 @@
             // homeToolStripMenuItem
             // 
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            this.homeToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.homeToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
             this.homeToolStripMenuItem.Text = "Inicio";
             this.homeToolStripMenuItem.Click += new System.EventHandler(this.homeToolStripMenuItem_Click);
             // 
             // goForwardToolStripMenuItem
             // 
             this.goForwardToolStripMenuItem.Name = "goForwardToolStripMenuItem";
-            this.goForwardToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.goForwardToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
             this.goForwardToolStripMenuItem.Text = "Ir adelante";
             this.goForwardToolStripMenuItem.Click += new System.EventHandler(this.goForwardToolStripMenuItem_Click);
             // 
             // goBackToolStripMenuItem
             // 
             this.goBackToolStripMenuItem.Name = "goBackToolStripMenuItem";
-            this.goBackToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.goBackToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
             this.goBackToolStripMenuItem.Text = "Ir atras";
             this.goBackToolStripMenuItem.Click += new System.EventHandler(this.goBackToolStripMenuItem_Click);
+            // 
+            // historialToolStripMenuItem
+            // 
+            this.historialToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ordenAscendenteToolStripMenuItem,
+            this.másVisitadoToolStripMenuItem});
+            this.historialToolStripMenuItem.Name = "historialToolStripMenuItem";
+            this.historialToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
+            this.historialToolStripMenuItem.Text = "Historial";
+            this.historialToolStripMenuItem.Click += new System.EventHandler(this.historialToolStripMenuItem_Click);
+            // 
+            // ordenAscendenteToolStripMenuItem
+            // 
+            this.ordenAscendenteToolStripMenuItem.Name = "ordenAscendenteToolStripMenuItem";
+            this.ordenAscendenteToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.ordenAscendenteToolStripMenuItem.Text = "Fecha de visita";
+            this.ordenAscendenteToolStripMenuItem.Click += new System.EventHandler(this.ordenAscendenteToolStripMenuItem_Click);
+            // 
+            // másVisitadoToolStripMenuItem
+            // 
+            this.másVisitadoToolStripMenuItem.Name = "másVisitadoToolStripMenuItem";
+            this.másVisitadoToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.másVisitadoToolStripMenuItem.Text = "Más visitado";
+            this.másVisitadoToolStripMenuItem.Click += new System.EventHandler(this.másVisitadoToolStripMenuItem_Click);
             // 
             // GoButton
             // 
@@ -119,30 +144,6 @@
             this.webBrowser1.Size = new System.Drawing.Size(784, 451);
             this.webBrowser1.TabIndex = 3;
             // 
-            // historialToolStripMenuItem
-            // 
-            this.historialToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ordenAscendenteToolStripMenuItem,
-            this.másVisitadoToolStripMenuItem});
-            this.historialToolStripMenuItem.Name = "historialToolStripMenuItem";
-            this.historialToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
-            this.historialToolStripMenuItem.Text = "Historial";
-            this.historialToolStripMenuItem.Click += new System.EventHandler(this.historialToolStripMenuItem_Click);
-            // 
-            // ordenAscendenteToolStripMenuItem
-            // 
-            this.ordenAscendenteToolStripMenuItem.Name = "ordenAscendenteToolStripMenuItem";
-            this.ordenAscendenteToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.ordenAscendenteToolStripMenuItem.Text = "Fecha de visita";
-            this.ordenAscendenteToolStripMenuItem.Click += new System.EventHandler(this.ordenAscendenteToolStripMenuItem_Click);
-            // 
-            // másVisitadoToolStripMenuItem
-            // 
-            this.másVisitadoToolStripMenuItem.Name = "másVisitadoToolStripMenuItem";
-            this.másVisitadoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.másVisitadoToolStripMenuItem.Text = "Más visitado";
-            this.másVisitadoToolStripMenuItem.Click += new System.EventHandler(this.másVisitadoToolStripMenuItem_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -150,12 +151,24 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(784, 451);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // DeletePagButton
+            // 
+            this.DeletePagButton.Location = new System.Drawing.Point(593, 67);
+            this.DeletePagButton.Name = "DeletePagButton";
+            this.DeletePagButton.Size = new System.Drawing.Size(75, 23);
+            this.DeletePagButton.TabIndex = 5;
+            this.DeletePagButton.Text = "Eliminar pag";
+            this.DeletePagButton.UseVisualStyleBackColor = true;
+            this.DeletePagButton.Click += new System.EventHandler(this.DeletePagButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.DeletePagButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.comboBox1);
@@ -187,6 +200,7 @@
         private System.Windows.Forms.ToolStripMenuItem ordenAscendenteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem másVisitadoToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button DeletePagButton;
     }
 }
 

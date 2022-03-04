@@ -23,28 +23,16 @@ namespace NavegadorWeb
         {
             webBrowser1.Visible = true;
             dataGridView1.Visible = false;
+            DeletePagButton.Visible = false;
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
         }
-        private void readFile(string fileName)
-        {
-            FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(fs);
-            while(sr.Peek() != -1)
-            {
-                Url aux = new Url();
-                aux.Resource = sr.ReadLine();
-                aux.TimesVisited = Convert.ToInt32(sr.ReadLine());
-                aux.Date = Convert.ToDateTime(sr.ReadLine());
-                urlList.Add(aux);
-            }
-            sr.Close();
-        }
         private void Form1_Load(object sender, EventArgs e)
         {
+            DeletePagButton.Visible = false;
             dataGridView1.Visible = false;
             readFile("Historial.txt");
             //Escribir url en combobox
@@ -103,19 +91,7 @@ namespace NavegadorWeb
             saveFile("Historial.txt");
             comboBox1.Text = url;
         }
-        private void saveFile(string fileName)
-        {
-            FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(stream);
-            foreach(var url in urlList)
-            {
-                foreach (string s in url.getUrlData())
-                {
-                    sw.WriteLine(s);
-                }
-            }
-            sw.Close();
-        }
+        
 
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -136,9 +112,10 @@ namespace NavegadorWeb
         private void historialToolStripMenuItem_Click(object sender, EventArgs e)
         {
             webBrowser1.Visible = false;
+            DeletePagButton.Visible = true;
             dataGridView1.Visible = true;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.DataSource = urlList;
+            dataGridView1.DataSource = urlList.ToList();
         }
 
         private void ordenAscendenteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -149,6 +126,58 @@ namespace NavegadorWeb
         private void másVisitadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = urlList.OrderBy(url => url.TimesVisited).ToList();
+        }
+
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+        private void readFile(string fileName)
+        {
+            FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(fs);
+            while (sr.Peek() != -1)
+            {
+                Url aux = new Url();
+                aux.Resource = sr.ReadLine();
+                aux.TimesVisited = Convert.ToInt32(sr.ReadLine());
+                aux.Date = Convert.ToDateTime(sr.ReadLine());
+                urlList.Add(aux);
+            }
+            sr.Close();
+            fs.Close();
+        }
+        private void saveFile(string fileName)
+        {
+            FileStream stream = new FileStream(fileName, FileMode.Create, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(stream);
+            Console.WriteLine(urlList.Count + "<<<<");
+            foreach (var url in urlList)
+            {
+                foreach (string s in url.GetUrlData())
+                {
+                    sw.WriteLine(s);
+                }
+            }
+            sw.Close();
+            stream.Close();
+        }
+
+        private void DeletePagButton_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Estas seguro de eliminar esta pagina?",
+                                     "Confirma eliminar!",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                urlList.RemoveAt(dataGridView1.CurrentCell.RowIndex);
+                dataGridView1.DataSource = null;
+                saveFile("Historial.txt");
+            }
+
+            dataGridView1.DataSource = urlList.ToList();
         }
     }
 }

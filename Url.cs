@@ -27,7 +27,7 @@ namespace NavegadorWeb
             set { date = value; }
         }
         
-        public string[] getUrlData()
+        public string[] GetUrlData()
         {
             string [] data = {this.resource, this.timesVisited.ToString(), this.Date.ToString()};
             return data;
